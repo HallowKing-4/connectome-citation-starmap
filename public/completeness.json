@@ -1,0 +1,26 @@
+{
+  "papers": 210,
+  "with_abstract": 209,
+  "with_doi": 210,
+  "with_citedin_list": 208,
+  "with_keywords": 209,
+  "abstract_coverage": 0.995,
+  "doi_coverage": 1.0,
+  "citedin_coverage": 0.99,
+  "direct_citation_pairs": 1268,
+  "cocitation_pairs_min8_shared_citers": 6906,
+  "keyword_fallback_used": false,
+  "keyword_pairs": 0,
+  "edges_before_cap": 7088,
+  "edges_after_cap": 700,
+  "edge_type_counts": {
+    "direct": 699,
+    "cocite": 700
+  },
+  "source": "Europe PMC + NCBI E-utilities (pubmed_pubmed_citedin)",
+  "source_urls": [
+    "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi"
+  ],
+  "note": "Direct edges exist only when a corpus paper appears on another corpus paper's NCBI cited-in list. Co-citation edges require >=8 shared citing PMIDs. No edges are inferred or invented."
+}
