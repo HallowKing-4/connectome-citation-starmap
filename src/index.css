@@ -1,0 +1,208 @@
+:root {
+  color-scheme: dark;
+  --bg: #05060c;
+  --ink: #e8e4d8;
+  --muted: #9aa3b5;
+  --gold: #d4b46a;
+  --panel: rgba(8, 10, 18, 0.72);
+  --stroke: rgba(212, 180, 106, 0.28);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html, body, #root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+button, a { font: inherit; }
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 45%, #121528 0%, #05060c 62%, #020208 100%);
+}
+
+.graph-wrap { position: absolute; inset: 0; }
+.graph-wrap canvas { display: block; }
+
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.hud > * { pointer-events: auto; }
+
+.masthead {
+  position: absolute;
+  top: 22px;
+  left: 26px;
+  max-width: min(520px, 46vw);
+}
+.masthead h1 {
+  margin: 0 0 6px;
+  font-size: clamp(22px, 2.4vw, 34px);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+.masthead p.lede {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.45;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.toolbar {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  display: flex;
+  gap: 8px;
+}
+.toolbar button, .toolbar a.btn {
+  pointer-events: auto;
+  border: 1px solid var(--stroke);
+  background: var(--panel);
+  color: var(--ink);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+}
+.toolbar button:hover, .toolbar a.btn:hover {
+  border-color: var(--gold);
+  color: #fff;
+}
+
+.legend {
+  position: absolute;
+  left: 22px;
+  bottom: 22px;
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  max-height: 46vh;
+  overflow: auto;
+  min-width: 220px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.legend h2 {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 2px;
+  cursor: pointer;
+  color: #c9d0dc;
+  font-size: 12.5px;
+  border-radius: 6px;
+}
+.legend-row:hover, .legend-row.active { background: rgba(255,255,255,0.05); color: #fff; }
+.swatch {
+  width: 9px; height: 9px; border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+  flex: none;
+}
+.legend .hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: #7d8696;
+  line-height: 1.35;
+}
+
+.completeness {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  color: #9aa3b5;
+  max-width: 280px;
+  line-height: 1.4;
+}
+.completeness strong { color: var(--gold); font-weight: 600; }
+
+.detail {
+  position: absolute;
+  top: 78px;
+  right: 22px;
+  width: min(380px, 34vw);
+  max-height: calc(100vh - 170px);
+  overflow: auto;
+  padding: 16px 16px 18px;
+  background: rgba(7, 8, 16, 0.86);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.detail h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  line-height: 1.3;
+  font-family: Georgia, "Iowan Old Style", serif;
+}
+.detail .meta { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
+.detail .abstract {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #d5dbe6;
+  white-space: pre-wrap;
+}
+.detail .actions { display: flex; gap: 8px; margin-top: 14px; }
+.detail a.open, .detail button.close {
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.detail a.open {
+  background: #d4b46a;
+  color: #1a1408;
+  text-decoration: none;
+  font-weight: 600;
+}
+.detail button.close {
+  background: transparent;
+  border: 1px solid var(--stroke);
+  color: var(--ink);
+}
+
+.boot, .err {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  z-index: 5;
+  text-align: center;
+  padding: 24px;
+}
+.err { color: #e8b4b4; }
