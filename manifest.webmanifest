@@ -1,0 +1,11 @@
+{
+  "name": "Citation Star-Map — Network Neuroscience",
+  "short_name": "Atlas",
+  "description": "A true-3D citation star-map of real papers in network neuroscience and brain connectomics.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07070d",
+  "theme_color": "#07070d",
+  "icons": [{"src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]
+}
